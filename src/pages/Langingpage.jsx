@@ -10,7 +10,7 @@ export default function LandingPage() {
 
           <nav>
             <a href="#about">Sobre Nós</a>
-            <a href="/landingpage">Início</a>
+            <a href="pages/LAginpage.jsx">Início</a>
             <a href="#how-it-works">Como funciona</a>
             <a href="/contato">Contato</a>
             <a href="#projects">Projetos</a>
