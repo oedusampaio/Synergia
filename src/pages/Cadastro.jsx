@@ -1,3 +1,4 @@
+import React from "react";
 import "../cadastro.css";
 
 export default function Cadastro() {
@@ -7,15 +8,19 @@ export default function Cadastro() {
         <span className="logo-text">Synergia</span>
       </header>
 
-      <div className="login-card-container">
-        <div className="login-card">
+      <div className="cadastro-card-container">
+        <div className="cadastro-card">
           <h1 className="card-title">CADASTRE - SE</h1>
 
           <form className="cadastro-form">
-
             <div className="input-group">
               <label htmlFor="nome">Nome</label>
-              <input type="text" id="nome" name="nome" placeholder="Nome Completo" />
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Nome Completo"
+              />
             </div>
 
             <div className="input-group">
@@ -25,7 +30,12 @@ export default function Cadastro() {
 
             <div className="input-group">
               <label htmlFor="cpf">CPF</label>
-              <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" />
+              <input
+                type="text"
+                id="cpf"
+                name="cpf"
+                placeholder="000.000.000-00"
+              />
             </div>
 
             <div className="input-group">
@@ -51,14 +61,13 @@ export default function Cadastro() {
             <button type="submit" className="btn btn-register-final">
               Cadastre-se
             </button>
-          </form>
+         <p className="cadastro-text">
+  Já possui conta?  Faça{" "}
+  <a href="Login" className="register-link-highlight">Login</a>.
+</p>
+</form>
 
-          <p className="login-text">
-            Já possui conta? Faça{" "}
-            <a href="/login" className="register-link-highlight">
-              Login
-            </a>.
-          </p>
+
         </div>
       </div>
     </div>

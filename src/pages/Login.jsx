@@ -1,3 +1,6 @@
+import React from "react";
+import "../login.css";
+
 export default function Login() {
   return (
     <div className="background-container">
@@ -20,24 +23,26 @@ export default function Login() {
               <input type="password" id="senha" name="senha" />
             </div>
 
-            <button type="submit" className="btn btn-login-final">
+            <a href="EsqueciSenha.jsx" className="forgot-password">
+              Esqueceu a senha?
+            </a>
+
+            <button type="submit" className="btn btn-login">
               Entrar
             </button>
           </form>
 
-          <p className="login-text">
-            Esqueceu sua senha?{" "}
-            <a href="/esquecisenha" className="register-link-highlight">
-              Clique aqui
-            </a>
-          </p>
-
-          <p className="login-text">
-            Não possui conta? Faça{" "}
-            <a href="/cadastro" className="register-link-highlight">
+          <p className="register-text">
+            Sem{" "}
+            <a href="Cadastro" className="register-link-highlight">
               Cadastro
             </a>
+            ? Venha mudar o mundo conosco.
           </p>
+
+          <a href="Cadastro" className="btn btn-register">
+            Cadastre-se
+          </a>
         </div>
       </div>
     </div>

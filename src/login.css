@@ -78,7 +78,7 @@ body {
     transform: translate(calc(-60% + 70px), calc(-50% + 25px)); 
 
     width: 590px; 
-    height: 450px; 
+    height: 430px; 
     background-color: var(--color-primary);
     border-radius: 60px; 
     z-index: 1;
@@ -155,7 +155,8 @@ body {
 }
 
 .btn {
- width: 40%;
+
+    width: 40%;
     padding: 7px;
     border: none;
     border-radius: 25px;
@@ -163,11 +164,16 @@ body {
     cursor: pointer;
     transition: background-color 0.2s;
     font-weight: bold;
-    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    text-decoration: none; /* Adicione esta linha */
+    text-decoration: none;
+
+    /* AQUI está a solução */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .btn-login {
  background-color: var(--color-primary);
@@ -183,8 +189,11 @@ body {
 }
 
 .register-text {
-    font-size: 0.9em; 
-    margin-bottom: 5px;
+   /* O valor original era 1.0em. Você pode diminuir para um valor menor. */
+    font-size: 0.9em; /* DIMINUÍDO: de 1.0em para 0.9em (tamanho menor) */
+    color: var(--color-text-dark);
+    text-align: center;
+    margin-bottom: 10px;
     margin-top: 15px;
 }
 
