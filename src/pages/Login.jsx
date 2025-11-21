@@ -32,7 +32,6 @@ export default function Login() {
               Entrar
             </button>
           </form>
-
           <p className="register-text">
             Sem {" "}
             <Link to="/cadastro" className="register-link-highlight">
