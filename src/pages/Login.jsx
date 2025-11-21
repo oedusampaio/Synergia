@@ -1,5 +1,6 @@
 import React from "react";
 import "../login.css";
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   return (
@@ -23,9 +24,9 @@ export default function Login() {
               <input type="password" id="senha" name="senha" />
             </div>
 
-            <a href="EsqueciSenha.jsx" className="forgot-password">
+            <Link to="/esqueci-senha" className="forgot-password">
               Esqueceu a senha?
-            </a>
+            </Link>
 
             <button type="submit" className="btn btn-login">
               Entrar
@@ -33,16 +34,16 @@ export default function Login() {
           </form>
 
           <p className="register-text">
-            Sem{" "}
-            <a href="Cadastro" className="register-link-highlight">
+            Sem {" "}
+            <Link to="/cadastro" className="register-link-highlight">
               Cadastro
-            </a>
+            </Link>
             ? Venha mudar o mundo conosco.
           </p>
 
-          <a href="Cadastro" className="btn btn-register">
+          <Link to="/cadastro" className="btn btn-register">
             Cadastre-se
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Plus } from 'lucide-react'; // Usamos 'Plus' para "Nova Ferramenta"
 import ToolCard from '../components/ToolCard'; // Componente Card da Ferramenta
 import Pagination from '../components/Pagination'; // Componente de Paginação
 import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
 
 // Dados mockados para as Ferramentas (baseados na imagem)
 const mockTools = [
@@ -18,19 +19,41 @@ const mockTools = [
   { id: 10, name: 'Extintor de Incêndio', imgSrc: 'tool_fire.jpg' },
 ];
 
-const totalTools = 46;
+const totalToolsFallback = 46;
 const itemsPerPage = 10;
 
 export default function Ferramentas() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [tools, setTools] = useState([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   
 
-  // Filtro e Paginação (apenas simulação)
-  const filteredTools = mockTools.filter(tool =>
-    tool.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // Fetch ferramentas from backend on mount (fallback to mock data on error)
+  useEffect(() => {
+    let mounted = true;
+    setLoading(true);
+    api.get('/api/ferramentas')
+      .then((data) => {
+        if (!mounted) return;
+        // backend may return an object with content or an array
+        if (Array.isArray(data)) setTools(data);
+        else if (data && Array.isArray(data.content)) setTools(data.content);
+        else setTools(mockTools);
+      })
+      .catch((err) => {
+        console.warn('Failed to load ferramentas from API, using mock data', err);
+        if (mounted) setTools(mockTools);
+      })
+      .finally(() => mounted && setLoading(false));
+    return () => { mounted = false; };
+  }, []);
+
+  // Filtro e Paginação (usa dados carregados)
+  const filteredTools = (tools.length ? tools : mockTools).filter((tool) =>
+    (tool.name || '').toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const paginatedTools = filteredTools.slice(
@@ -56,7 +79,7 @@ export default function Ferramentas() {
   return (
     <div className="p-8 w-full bg-white">
       {/* Header/Topbar customizado para Ferramentas */}
-      <header className="flex justify-between items-center pb-6 border-b border-gray-200">
+      <header className="flex justify-between items-center pb-6">
         <div className="flex flex-col">
           <h3 className="text-lg font-bold" style={{ color: '#00715D' }}>Lista de Ferramentas</h3>
           <p className="text-sm text-gray-500">Lista de ferramentas</p>

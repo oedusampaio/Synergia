@@ -1,7 +1,17 @@
 import React from "react";
 import "../cadastro.css";
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Cadastro() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Aqui você colocaria a chamada ao backend para criar o usuário.
+    // Após sucesso, redirecione para a tela de login.
+    navigate('/login');
+  };
+
   return (
     <div className="background-container">
       <header className="logo">
@@ -12,7 +22,7 @@ export default function Cadastro() {
         <div className="cadastro-card">
           <h1 className="card-title">CADASTRE - SE</h1>
 
-          <form className="cadastro-form">
+          <form className="cadastro-form" onSubmit={handleSubmit}>
             <div className="input-group">
               <label htmlFor="nome">Nome</label>
               <input
@@ -61,9 +71,9 @@ export default function Cadastro() {
             <button type="submit" className="btn btn-register-final">
               Cadastre-se
             </button>
-         <p className="cadastro-text">
-  Já possui conta?  Faça{" "}
-  <a href="Login" className="register-link-highlight">Login</a>.
+            <p className="cadastro-text">
+  Já possui conta?  Faça {" "}
+  <Link to="/login" className="register-link-highlight">Login</Link>.
 </p>
 </form>
 

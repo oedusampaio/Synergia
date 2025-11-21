@@ -99,7 +99,7 @@ export default function Inscricoes() {
         <div className="p-8 w-full bg-white">
 
             {/* HEADER */}
-<header className="flex justify-between items-center pb-6 border-b border-gray-200">
+<header className="flex justify-between items-center pb-6">
     
     {/* Título e Subtítulo */}
     <div className="flex flex-col">

@@ -175,10 +175,10 @@ body {
 }
 
 
-.btn-login {
- background-color: var(--color-primary);
-    color: white;
-    background-color: #008779;
+.login-card .btn-login {
+    /* Mais especificidade para sobrescrever estilos globais (landingpage.css) */
+    background-color: var(--color-primary) !important;
+    color: white !important;
 }
 
 .register-link-highlight {
